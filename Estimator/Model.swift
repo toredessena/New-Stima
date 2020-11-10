@@ -41,7 +41,8 @@ class StartValue: ObservableObject {
     }
     
     func calcFinal() -> Double {
-        let sub4 = calcSnrValue() + calcFloorValue() + calcCourtValue()
+        // qui c'è un problema.
+        let sub4 =   calcCourtValue() + calcSnrValue() + calcFloorValue()
         return sub4
     }
     
@@ -60,9 +61,10 @@ class StartValue: ObservableObject {
     @Published var factorStruct: Double = 0.25
     
     // funzioni per il calcolo finale  VcView
-    func calcStruct() -> Double {
-        let calc1 = factorStruct * structValue * calcFinal()
+    func calcStruct(valorediPartenza: Double) -> Double {
+        let calc1 = valorediPartenza  * factorStruct * structValue
              return calc1
     }
         
 }
+
